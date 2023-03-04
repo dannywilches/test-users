@@ -1,0 +1,93 @@
+<div class="h-100 w-100" style="overflow-y: scroll; opacity: 50;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <a class="navbar-brand mx-auto" href="#">Test Desarrollo GML</a>
+  </nav>
+  <div class="content-wrapper">
+      <div class="container">
+          <div class="row mt-3 mb-3 p-3 d-flex justify-content-center abs-center">
+              <div class="col-sm-12 mt-3">
+                  <div class="card shadow-card  mt-3 mb-3">
+                      <div class="card-header">
+                          Lista de Usuarios
+                      </div>
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <input
+                                      class="form form-control form-control-sm"
+                                      placeholder="Buscar..."
+                                      type="text"
+                                      [(ngModel)]="searchUsuario"
+                                      name="filterCharacter"
+                                  >
+                              </div>
+                              <div class="col-md-6">
+                                  <button class="btn btn-sm btn-primary" (click)="cleanFilter()">Limpiar</button>
+                              </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <pre>
+                                  <table class="table table-responsive table-striped table-hover">
+                                      <thead>
+                                          <tr class="text-center">
+                                              <!-- <th>ID</th> -->
+                                              <th>Nombres</th>
+                                              <th>Apellidos</th>
+                                              <th>Cédula</th>
+                                              <th>Email</th>
+                                              <th>País</th>
+                                              <th>Dirección</th>
+                                              <th>Celular</th>
+                                              <th>Categoria</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <!-- <tr class="text-center" *ngFor="let character of Characters | filter:filterCharacter | paginate: {
+                                              itemsPerPage: tableSize,
+                                              currentPage: page,
+                                              totalItems: count
+                                          }; let i = index "> -->
+                                          <tr class="text-center" *ngFor="let usuario of Usuarios | filtroUsuario:searchUsuario">
+                                              <td>{{usuario.nombres}}</td>
+                                              <td>{{usuario.apellidos}}</td>
+                                              <td>{{usuario.cedula}}</td>
+                                              <td>{{usuario.email}}</td>
+                                              <td>{{usuario.pais}}</td>
+                                              <td>{{usuario.direccion}}</td>
+                                              <td>{{usuario.celular}}</td>
+                                              <td>{{usuario.getCategorias.categoria}}</td>
+                                          </tr>
+                                      </tbody>
+                                  </table></pre>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <button>Crear Usuario</button>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="card-footer">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <div class="mt-2 text-center">
+                                      <pagination-controls
+                                          previousLabel="Ant"
+                                          nextLabel="Sig"
+                                          (pageChange)="onTableDataChange($event)"
+                                      >
+                                      </pagination-controls>
+                                  </div>
+                              </div>
+                          </div>
+                      </div> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
