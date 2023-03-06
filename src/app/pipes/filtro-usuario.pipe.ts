@@ -9,24 +9,30 @@ export class FiltroUsuarioPipe implements PipeTransform {
     // Este pipe esta diseñado para el filtrado de la información, en el for valida las coincidencias con cada uno de los campos de la tabla
     if (arg === '') return value;
     const resultUsuarios = [];
-    for(const character of value) {
-      if (character.name.toLowerCase().indexOf(arg.toLowerCase()) > -1){
-        resultUsuarios.push(character);
+    for(const usuario of value) {
+      if (usuario.nombres.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
       }
-      if (character.location.name.toLowerCase().indexOf(arg.toLowerCase()) > -1){
-        resultUsuarios.push(character);
+      else if (usuario.apellidos.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
       }
-      if (character.gender.toLowerCase().indexOf(arg.toLowerCase()) > -1){
-        resultUsuarios.push(character);
+      else if (usuario.cedula.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
       }
-      if (character.species.toLowerCase().indexOf(arg.toLowerCase()) > -1){
-        resultUsuarios.push(character);
+      else if (usuario.email.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
       }
-      if (character.status.toLowerCase().indexOf(arg.toLowerCase()) > -1){
-        resultUsuarios.push(character);
+      else if (usuario.pais.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
       }
-      if (character.created.toLowerCase().indexOf(arg.toLowerCase()) > -1){
-        resultUsuarios.push(character);
+      else if (usuario.direccion.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
+      }
+      else if (usuario.celular.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
+      }
+      else if (usuario.get_categoria.categoria.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        resultUsuarios.push(usuario);
       }
     }
     return resultUsuarios;

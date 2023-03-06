@@ -1,0 +1,100 @@
+
+<div class="card shadow-card  mt-3 mb-3">
+  <div class="card-header">
+    <b *ngIf="!id_user">Nuevo Usuario</b>
+    <b *ngIf="id_user">Actualizar Usuario</b>
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-sm-12">
+            <form [formGroup]="userForm" (ngSubmit)="nuevoUsuario()">
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Nombres: </label>
+                <input type="text" name="nombres" formControlName="nombres" [(ngModel)]="infoUser.nombres" class="form-control form-control-sm">
+                <div *ngIf="f.nombres.errors && f.nombres.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.nombres.invalid">
+                    Este campo es requerido y solo puede contener letras, no números
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Apellidos: </label>
+                <input type="text" name="apellidos" formControlName="apellidos" [(ngModel)]="infoUser.apellidos" class="form-control form-control-sm">
+                <div *ngIf="f.apellidos.errors && f.apellidos.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.apellidos.invalid">
+                    Este campo es requerido y solo puede contener letras, no números
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Cedula: </label>
+                <input type="text" name="cedula" formControlName="cedula" [(ngModel)]="infoUser.cedula" class="form-control form-control-sm" [readonly]="id_user">
+                <div *ngIf="f.cedula.errors && f.cedula.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.cedula.invalid">
+                    Este campo es requerido
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Email: </label>
+                <input type="text" name="email" formControlName="email" [(ngModel)]="infoUser.email" class="form-control form-control-sm" [readonly]="id_user">
+                <div *ngIf="f.email.errors && f.email.dirty" class="" style="font-size: 14px; color:red;">
+                  Ingrese un email valido
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">País: </label>
+                <select class="form-select form-select-sm" aria-label="Default select example" formControlName="pais" [(ngModel)]="infoUser.pais">
+                  <option selected>--</option>
+                  <option *ngFor="let country of ListCountries" value="{{country.common}}">{{ country.common }}</option>
+                </select>
+                <div *ngIf="f.pais.errors && f.pais.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.nombres.invalid">
+                    Este campo es requerido
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Direccion: </label>
+                <input type="text" name="direccion" formControlName="direccion" [(ngModel)]="infoUser.direccion" class="form-control form-control-sm">
+                <div *ngIf="f.direccion.errors && f.direccion.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.direccion.invalid">
+                    Este campo es requerido
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Celular: </label>
+                <input type="text" name="celular" formControlName="celular" [(ngModel)]="infoUser.celular" class="form-control form-control-sm">
+                <div *ngIf="f.celular.errors && f.celular.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.celular.invalid">
+                    Este campo es requerido y debe ser de 10 números
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2 mb-2">
+                <label for="title">Categoria: </label>
+                <select class="form-select form-select-sm" aria-label="Default select example" formControlName="categoria" [(ngModel)]="infoUser.categoria_id">
+                  <option selected>--</option>
+                  <option *ngFor="let category of ListCategory" value="{{category.id}}">{{ category.categoria }}</option>
+                </select>
+                <div *ngIf="f.categoria.errors && f.categoria.dirty" class="" style="font-size: 14px; color:red;">
+                  <div *ngIf="f.categoria.invalid">
+                    Este campor es requerido
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-sm-6 text-right">
+        <button *ngIf="!id_user" class="btn btn-sm btn-success mx-auto" (click)="nuevoUsuario()" [disabled]="userForm.invalid" type="submit">Registrar Usuario</button>
+        <button *ngIf="id_user" class="btn btn-sm btn-success mx-auto" (click)="actualizarUsuario()" [disabled]="userForm.invalid" type="submit">Actualizar Usuario</button>
+        <button class="btn btn-sm btn-danger mx-auto" routerLink="/lista-usuarios">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

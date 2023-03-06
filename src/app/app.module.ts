@@ -8,18 +8,24 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FiltroUsuarioPipe,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
